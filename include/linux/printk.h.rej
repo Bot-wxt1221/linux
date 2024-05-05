@@ -1,0 +1,30 @@
+--- include/linux/printk.h
++++ include/linux/printk.h
+@@ -278,8 +285,27 @@ static inline void dump_stack(void)
+ static inline void printk_trigger_flush(void)
+ {
+ }
++
++static inline void printk_legacy_allow_panic_sync(void)
++{
++}
++
++static inline void nbcon_driver_acquire(struct console *con)
++{
++}
++
++static inline void nbcon_driver_release(struct console *con)
++{
++}
++
++static inline void nbcon_atomic_flush_unsafe(void)
++{
++}
++
+ #endif
+ 
++bool this_cpu_in_panic(void);
++
+ #ifdef CONFIG_SMP
+ extern int __printk_cpu_sync_try_get(void);
+ extern void __printk_cpu_sync_wait(void);
